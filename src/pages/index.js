@@ -165,7 +165,7 @@ export default function Home() {
           {q3Answer === "yes" || q4Answer === "yes" ? (
             <div>
               <p>
-                今まで学習したことのあるプログラミング言語をすべて教えてください。
+                Q5.今まで学習したことのあるプログラミング言語をすべて教えてください。
               </p>
               <input type="text" {...register("allLearning")} />
             </div>
