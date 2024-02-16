@@ -8,16 +8,21 @@ import { addDoc, collection, onSnapshot } from "firebase/firestore";
 export default function Home() {
   const {
     register,
-    getValues,
     handleSubmit,
     formState: { errors },
     control,
   } = useForm();
 
-  const [value, setValue] = useState("");
+  const [q3Answer, setQ3Answer] = useState("");
+  const [q4Answer, setQ4Answer] = useState("");
 
-  const handleChange = (e) => {
-    setValue(e.target.value);
+  const handleChangeQ3 = (e) => {
+    setQ3Answer(e.target.value);
+    console.log(e.target.value);
+  };
+
+  const handleChangeQ4 = (e) => {
+    setQ4Answer(e.target.value);
     console.log(e.target.value);
   };
 
@@ -88,7 +93,7 @@ export default function Home() {
               {...register("isLearning", {
                 required: true,
               })}
-              onChange={handleChange}
+              onChange={handleChangeQ3}
               value="yes"
             />
             <label htmlFor="isLearning1">はい</label>
@@ -101,7 +106,7 @@ export default function Home() {
                 required: true,
               })}
               value="no"
-              onChange={handleChange}
+              onChange={handleChangeQ3}
             />
             <label htmlFor="isLearning2">いいえ</label>
 
@@ -113,7 +118,7 @@ export default function Home() {
                 required: true,
               })}
               value="nothing"
-              onChange={handleChange}
+              onChange={handleChangeQ3}
             />
             <label htmlFor="isLearning3">わからない</label>
 
@@ -129,7 +134,7 @@ export default function Home() {
                 required: true,
               })}
               value="yes"
-              onChange={handleChange}
+              onChange={handleChangeQ4}
             />
             <label htmlFor="wasLearning1">はい</label>
             <input
@@ -140,7 +145,7 @@ export default function Home() {
                 required: true,
               })}
               value="no"
-              onChange={handleChange}
+              onChange={handleChangeQ4}
             />
             <label htmlFor="wasLearning2">いいえ</label>
             <input
@@ -151,13 +156,13 @@ export default function Home() {
                 required: true,
               })}
               value="nothing"
-              onChange={handleChange}
+              onChange={handleChangeQ4}
             />
             <label htmlFor="wasLearning3">わからない</label>
 
             {errors.wasLearning && <span>このフィールドは回答必須です。</span>}
           </div>
-          {value === "yes" ? (
+          {q3Answer === "yes" || q4Answer === "yes" ? (
             <div>
               <p>
                 今まで学習したことのあるプログラミング言語をすべて教えてください。
