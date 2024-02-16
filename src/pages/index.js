@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import Container from "@material-ui/core/Container";
 import Input from "@material-ui/core/Input";
-import { db } from "./config/firebase";
+import { db } from "./api/config/firebase";
 import { addDoc, collection, onSnapshot } from "firebase/firestore";
 
 export default function Home() {
