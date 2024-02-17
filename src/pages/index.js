@@ -35,6 +35,7 @@ export default function Home() {
       Question4: data.wasLearning,
       Question5: data.allLearning,
     });
+    window.location.reload();
   };
 
   useEffect(() => {
